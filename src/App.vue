@@ -24,12 +24,11 @@
       </form>
     </div>
     <div>
-      <div class="flex-auto w-33"></div>
-      <div class="flex-auto w-40"></div>
       <div class="flex-auto w-20">
         <a v-if="$store.state.email" @click="logout" href="/">Logout</a>
       </div>
       <p>{{ $store.state.email }}</p>
+      <b v-if="$store.state.email">score is: {{ $store.state.score }}</b>
     </div>
   </nav>
   <router-link v-if="$store.state.email" to="/easy">Easy</router-link>
