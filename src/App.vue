@@ -29,6 +29,7 @@
       <div class="flex-auto w-20">
         <a v-if="$store.state.email" @click="logout" href="/">Logout</a>
       </div>
+      <p>{{ $store.state.email }}</p>
     </div>
   </nav>
   <router-link v-if="$store.state.email" to="/easy">Easy</router-link>

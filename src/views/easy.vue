@@ -25,6 +25,7 @@
 </template>
 <script>
 import axios from "axios";
+import store from "../store/index";
 export default {
   name: "easyView",
   data() {
@@ -36,7 +37,8 @@ export default {
   mounted() {
     axios
       .get(
-        "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple&token=" +
+          store.state.token
       )
       .then((response) => {
         let i = 1;
