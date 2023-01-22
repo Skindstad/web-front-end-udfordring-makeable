@@ -88,8 +88,6 @@ button:hover {
   box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem 0.5rem 0rem  0rem;
 }
-.cardBody {
-}
 .category {
   font-size: 1.8rem;
 }
@@ -99,8 +97,6 @@ button:hover {
 .radio {
   font-size: 1.5rem;
   text-align: center;
-}
-.answer {
 }
 .picked {
   font-size: 1.5rem;
