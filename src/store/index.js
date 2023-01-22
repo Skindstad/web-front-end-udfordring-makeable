@@ -13,7 +13,6 @@ export default createStore({
     listEasy: [],
     listMedium: [],
     listHard: [],
-    score: 0,
   },
   getters: {},
   mutations: {

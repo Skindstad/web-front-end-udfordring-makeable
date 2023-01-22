@@ -1,27 +1,43 @@
 <template>
   <div>
-    <h1>Welcomen to the medium quiz</h1>
-    <div v-for="item in list" v-bind:key="item.id">
+    <h1 class="title">Welcomen to the medium quiz</h1>
+    <div class="card" v-for="item in list" v-bind:key="item.id">
+      <div class="cardTitle">
+        <b class="category">*{{ item.category }}</b>
+      </div>
       <br />
-      <b>{{ item.category }}</b>
-      <h1 v-html="item.question"></h1>
-      <form @submit.prevent="submit">
-        <input type="hidden" :value="item.number" />
-        <div v-for="answer in item.answers" v-bind:key="answer.id">
-          <input
-            type="radio"
-            :name="item.number"
-            :id="answer"
-            v-bind:value="answer"
-            v-model="item.selected"
-          />
-          <label :for="answer" v-html="answer"></label>
+      <div class="cardBody">
+        <h1 class="question" v-html="item.question"></h1>
+        <br />
+        <form @submit.prevent="submit">
+          <input type="hidden" :value="item.number" />
+          <div
+            class="radio"
+            v-for="answer in item.answers"
+            v-bind:key="answer.id"
+          >
+            <input
+              type="radio"
+              :name="item.number"
+              :id="answer"
+              v-bind:value="answer"
+              v-model="item.selected"
+            />
+            <label class="answer" :for="answer" v-html="answer"></label>
+          </div>
+        </form>
+        <div class="picked">
+          <p>Your have picked: {{ item.selected }}</p>
         </div>
-      </form>
-      <p>Your have picked: {{ item.selected }}</p>
-      <br />
+        <br />
+      </div>
     </div>
-    <button @click="check">submit</button>
+    <br />
+    <div><button class="submit" @click="check">Submit</button><br /></div>
+    <br />
+    <div class="score">
+      <b>Score is: {{ score }}</b>
+    </div>
   </div>
 </template>
 <script>
@@ -29,7 +45,7 @@ import store from "../store/index";
 export default {
   name: "mediumView",
   data() {
-    return { list: [] };
+    return { list: [], score: 0 };
   },
   mounted() {
     let i = 1;
@@ -68,7 +84,7 @@ export default {
             if (answer.selected == answer.correct_answer) {
               alert(answer.question + " is correct");
               answer.result = "Correct";
-              store.state.score++;
+              this.score++;
             } else {
               alert(answer.question + " is wrong");
               answer.result = "Wrong";
