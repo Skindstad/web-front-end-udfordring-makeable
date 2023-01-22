@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="title">Welcomen to the easy quiz</h1>
+    <br />
     <div class="card" v-for="item in list" v-bind:key="item.id">
       <div class="cardTitle">
         <b class="category">*{{ item.category }}</b>
